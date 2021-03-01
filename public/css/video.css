@@ -1,0 +1,26 @@
+.video-item {
+  width: 25rem;
+  max-width: 95%;
+  margin: 1rem;
+}
+
+.video__title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.video__price {
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
+}
+
+.video__description {
+  text-align: center;
+}
+
+.btn-logo {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,133 @@
+<%- include('../includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/top-bar.css">
+  <link rel="stylesheet" href="/css/side-bar.css">
+  <link rel="stylesheet" href="/css/video.css">
+  </head>
+
+  <body>
+    <%- include('../includes/top-bar.ejs', {searchMode: searchMode}) %>
+      <div style="position: relative;" class="content">
+        <%- include('../includes/side-bar.ejs') %>
+          <main>
+            <% if (videos.length> 0) { %>
+              <h5>All Videos</h5>
+              <div class="grid">
+                <% for( let video of videos ) { %>
+                  <article class="card video-item" style="margin-left: 100px;">
+                    <input type="checkbox" name="selected" class="cb" id="selected-<%= video._id %>"
+                      style="float: left; position: absolute;">
+                    <div class="card__image">
+                      <img src="/<%= video.imageUrl %>" alt="<%= video.title %>">
+                    </div>
+                    <header class="card__header">
+                      <h1 class="video">
+                        <%= video.title %>
+                      </h1>
+                    </header>
+                    <div class="card__content">
+                      <p class="video__author">
+                        <%= video.author %>
+                      </p>
+                      <div class="card__actions">
+                        <a href="#" class="btn">
+                          <i class="fas fa-ellipsis-h"></i>
+                        </a>
+                        <form style="display: inline;" action="/library/star-video" method="post">
+                          <input type="hidden" name="videoId" value="<%= video._id %>">
+                          <button type="submit" class="btn btn-logo">
+                            <i class="<%= video.isStarred ? 'fas' : 'far' %> fa-star"></i>
+                          </button>
+                        </form>
+                        <form style="display: inline;" action="/library/tag-video" method="post"
+                          id="tag-form-<%= video._id %>">
+                          <input type="hidden" name="videoId" value="<%= video._id %>">
+                          <input type="hidden" name="title" id="title-<%= video._id %>">
+                          <button type="button" class="btn btn-logo" id="tag-btn-<%= video._id %>">
+                            <i class="fas fa-link"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </article>
+                  <% if (searchMode) { %>
+                    <article class="card video-item">
+                      <div class="card__desc">
+                        <p>
+                          <%= video.description %>
+                        </p>
+                      </div>
+                    </article>
+                    <br>
+                    <% } %>
+                      <div id="bottom-bar">
+                        <div class="select-info">
+                          <div id="select-number">
+                            <p>0 videos selected</p>
+                          </div>
+                          <div id="select-all">
+                            <p>Select All</p>
+                          </div>
+                          <div id="select-settings">
+                            <i class="fas fa-sliders-h"></i>
+                          </div>
+                        </div>
+                        <div class="select-utilities">
+                          <div id="select-feature">
+                            <i class="far fa-star"></i>
+                          </div>
+                          <div id="select-tag">
+                            <i class="fas fa-tag"></i>
+                          </div>
+                          <div id="select-twitter">
+                            <i class="fab fa-twitter"></i>
+                          </div>
+                          <div id="select-mail">
+                            <i class="far fa-envelope"></i>
+                          </div>
+                          <div id="select-code">
+                            <i class="fas fa-code"></i>
+                          </div>
+                          <div id="select-link">
+                            <i class="fas fa-link"></i>
+                          </div>
+                          <div id="select-cancel">
+                            <p>Cancel</p>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+              </div>
+              <% } else { %>
+                <h1>No Videos Found!</h1>
+                <% } %>
+          </main>
+          <!-- Tag Modal -->
+          <div id="tag-modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h3>Tag Video</h3>
+              <input type="text" name="tagTitle" id="tagTitle" placeholder="Enter tag title">
+              <button id="addBtn">Add</button>
+            </div>
+          </div>
+
+          <!-- Select Modal -->
+          <div id="select-modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h3>Select All</h3>
+              <select name="select-videos" id="select-videos">
+                <option disabled value="" selected>Choose a tag</option>
+              </select>
+              <button id="selectBtn">Select</button>
+            </div>
+          </div>
+      </div>
+      <script src="/js/tag-modal.js"></script>
+      <script src="/js/select-modal.js"></script>
+      <script src="/js/select-video.js"></script>
+      <%- include('../includes/end.ejs') %>

@@ -1,0 +1,31 @@
+<div class="top-bar">
+  <div id="logo">
+    <div id="logo-circle"></div>
+  </div>
+  <% if (!searchMode) { %>
+    <div id="page-title">
+      <h3>Personal Library</h3>
+    </div>
+    <div class="utilities"></div>
+    <ul class="utility-list">
+      <li><a href="/library/search" class="utility" id="search"><i class="fas fa-search"></i></a></li>
+      <li><a href="/library/add-video" class="utility" id="upload"><i class="fas fa-upload"></i></a></li>
+      <li><button type="button" id="btn-copy" onclick="copyLink()">
+          <i class="fas fa-link"></i>
+          <span class="btn-vertical-line"></span>
+          Copy Link
+        </button></li>
+      <li><a href="#" class="utility" id="notifications"><i class="far fa-bell"></i></a></li>
+      <li><a href="#" class="utility" id="profile"><i class="fas fa-user-circle"></i></a></li>
+    </ul>
+    <% } else { %>
+      <div class="search-box">
+        <form action="/library/search/videos" method="get">
+          <input type="text" name="searchQuery" class="searchTerm" placeholder="Enter search query">
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <% } %>
+</div>

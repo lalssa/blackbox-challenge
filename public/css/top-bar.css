@@ -1,0 +1,115 @@
+.top-bar {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#page-title {
+    letter-spacing: 0px;
+    text-align: left;
+    color: #393856;
+    font-size: 24px;
+    font-weight: 900;
+    font-style: normal;
+    font-family: "Lato", serif;
+}
+
+#logo {
+  min-width: 34px;
+  height: 34px;
+  background-color: #2681f2;
+  border-radius: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo-circle {
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border-radius: 9px;
+}
+
+.utility-list {
+  list-style: none;
+}
+
+.utility-list > li {
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.utility-list > li> a:link,
+.utility-list > li> a:visited,
+.utility-list > li> a:hover,
+.utility-list > li> a:active {
+  color: #393856;
+}
+
+.utility-list > li> a:hover,
+.utility-list > li> a:active {
+  opacity: 0.5;
+}
+
+.utility-list > li > a#profile {
+  font-size: 30px;
+}
+
+#btn-copy {
+  color: #f7f7f8;
+  background-color: #2681f2;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn-vertical-line {
+  text-align:center;
+  border-left: 1px solid white;
+  margin-right: 5px;
+}
+
+.search-box {
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 80%;
+  position: relative;
+}
+
+.search-box> form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}

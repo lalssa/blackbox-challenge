@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/video.css">
+  <link rel="stylesheet" href="/css/forms.css">
+  </head>
+
+  <body>
+    <%- include('../includes/top-bar.ejs', {searchMode: searchMode}) %>
+      <div class="content">
+        <%- include('../includes/side-bar.ejs') %>
+          <main>
+            <form class="video-form" action="/library/<%= editing ? 'edit-video' : 'add-video' %>" method="POST"
+              enctype="multipart/form-data">
+              <div class="form-control">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<%= editing || hasError ? video.title : ''  %>">
+              </div>
+              <div class="form-control">
+                <label for="image">Video</label>
+                <input type="file" name="image" id="image">
+              </div>
+              <div class="form-control">
+                <label for="description">Description</label>
+                <textarea name="description" id="description"
+                  rows="5"><%= editing || hasError ? video.description : ''  %></textarea>
+              </div>
+              <% if (editing) { %>
+                <input type="hidden" name="videoId" value="<%= video._id %>">
+                <% } %>
+                  <button class="btn" type="submit">
+                    <% if ( editing ) { %> Update video <% } else { %> Add video <% } %>
+                  </button>
+            </form>
+          </main>
+
+
+      </div>
+      <%- include('../includes/end.ejs') %>
+        </div>
